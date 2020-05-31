@@ -1,12 +1,7 @@
 class Cli #handling all input and output. pulls together all the rest our classes
 
-    #CLI to alllow user to be able to select whether they want select by spell.name, spell.type, or spell.effect
+    #CLI to alllow user to be able to select whether they want to select by spell.name, spell.type, or spell.effect, or h.house_name = house
 
-    # def run
-    #     welcome
-    #     Api.get_spells
-    #     main
-    # end
     attr_accessor :name, :type, :house_id, :house_name
     def call
         user_input = ""
@@ -71,35 +66,8 @@ class Cli #handling all input and output. pulls together all the rest our classe
             house_id += 1
         end
     end
-    
-    # def spell_type
-    # end
-    
-    # def spell_effect
-    # end
-    
-    # def house
-    # end
 
-
-
-
-
-
-    # def main
-    #     print_all
-    # end
-
-    # def print_all
-    #     i = 1
-    #     Potter.all.each do |spell| 
-    #         puts spell.name
-
-    #         binding.pry
-    #     end
-    # end
-
-    # def welcome
-    #     "Welcome to Potter Spells!"
-    # end
+    def member_id
+        characters = Characters.all.select {|id| id.character_id}
+    end
 end

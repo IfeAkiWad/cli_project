@@ -3,11 +3,20 @@ class Api
     URL = "https://www.potterapi.com/v1/"
     API_KEY = ENV["API_KEY"]
     
-    # def self.get_characters_by_house(house)
-    #     binding.pry
-    #     # res = RestClient.get("#{URL}characters?key=#{API_KEY}&house=#{house}")
-    #     # data = JSON.parse(res.body)
-    # end 
+    def self.get_characters
+        # binding.pry
+        res = RestClient.get("#{URL}characters?key=#{API_KEY}")
+        data = JSON.parse(res.body)
+        data.each do |character| 
+            character_id = character['_id']
+            character_name = character['name']
+            character_role = character['role']
+            character_house = character['house']
+            character_school = character['school']
+            Characters.new(character_id, character_name, character_role, character_house, character_school)
+            # binding.pry
+        end
+    end 
 
     def self.get_spells
         res = RestClient.get("#{URL}spells?key=#{API_KEY}")
@@ -21,9 +30,7 @@ class Api
     end
     
     def self.get_houses
-            # binding.pry
         res = RestClient.get("#{URL}houses?key=#{API_KEY}")
-        binding.pry
         data = JSON.parse(res.body)
         data.each do |house|         
             house_id = house['_id']
