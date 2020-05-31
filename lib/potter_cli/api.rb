@@ -12,8 +12,8 @@ class Api
     def self.get_spells
         res = RestClient.get("#{URL}spells?key=#{API_KEY}")
         data = JSON.parse(res.body)
-        data.each do |spell| #giant array of hashes. each hash is a spell--spell will be our argument.
-            name =  spell['spell'] # reading the values of each key: spell, type, and effect
+        data.each do |spell| 
+            name =  spell['spell'] 
             type = spell['type']
             effect = spell['effect']
             Potter.new(name, type, effect)
@@ -23,13 +23,12 @@ class Api
     def self.get_houses
             # binding.pry
         res = RestClient.get("#{URL}houses?key=#{API_KEY}")
+        binding.pry
         data = JSON.parse(res.body)
-        data.each do |house| #giant array of hashes. each hash is a house--house will be our argument.
-                      
-            # binding.pry
-            house_head = house['headOfHouse']
+        data.each do |house|         
             house_id = house['_id']
             house_name = house['name']
+            house_head = house['headOfHouse']
             mascot = house['mascot']
             house_ghost = house['houseGhost']
             founder = house['founder']
@@ -37,8 +36,7 @@ class Api
             members = house['members']
             values = house['values']
             colors = house['colors']
-            PotterHouse.new(house_id, house_name, mascot, house_ghost, founder, school, members, values, colors) 
+            PotterHouse.new(house_id, house_name, house_head, mascot, house_ghost, founder, school, members, values, colors) 
         end
-        # binding.pry
     end
 end

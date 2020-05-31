@@ -22,13 +22,14 @@ end
 
 class PotterHouse
     
-    attr_reader :house_id, :house_name, :mascot, :house_ghost, :founder, :school, :members, :values, :colors
+    attr_reader :house_id, :house_name, :house_head, :mascot, :house_ghost, :founder, :school, :members, :values, :colors
 
     @@all = []
 
-    def initialize(house_id, house_name, mascot, house_ghost, founder, school, members, values, colors)
+    def initialize(house_id, house_name, house_head, mascot, house_ghost, founder, school, members, values, colors)
         @house_id = house_id
         @house_name = house_name
+        @house_head = house_head
         @mascot = mascot
         @house_ghost = house_ghost
         @founder = founder
