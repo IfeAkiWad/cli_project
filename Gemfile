@@ -8,3 +8,4 @@ gem 'pry'
 gem 'rest-client'
 gem 'json'
 gem "dotenv"
+gem 'awesome_print', '~> 1.8'

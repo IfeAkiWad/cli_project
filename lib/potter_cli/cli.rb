@@ -4,15 +4,23 @@ class Cli #handling all input and output. pulls together all the rest our classe
 
     attr_accessor :name, :type, :house_id, :house_name
     def call
-        user_input = ""
+        user_input = gets.strip
         
         while user_input != "exit"
             puts "Welcome to Potter House and Spells!"
+            space
+            sleep 2
             puts "To retrieve the book of spells by name, enter 'spell name'."
+            sleep 2
             puts "To retrieve the book of spells by type, enter 'spell type'."
+            sleep 2
             puts "To retrieve the book of spells by effect, enter 'spell effect'."
+            sleep 2
             puts "To visit the Hogwarts houses, enter 'house'."
+            sleep 2
             puts "To leave Potter House and Spells, enter 'exit'."
+            sleep 2
+            space
             puts "What would you like to do?"
             user_input = gets.strip
                 case user_input
@@ -58,16 +66,25 @@ class Cli #handling all input and output. pulls together all the rest our classe
         end
     end
 
-    def houses
+    def house
         ordered_list = PotterHouse.all.sort_by {|h| h.house_name}
         house_id  = 1
         ordered_list.each do |h|
             puts "#{house_id}. #{h.house_name}"
             house_id += 1
+            # member_id #calling the method
+            # binding.pry
         end
     end
 
-    def member_id
-        characters = Characters.all.select {|id| id.character_id}
+    # def member_id #creating a method that will allow me to set matching chracter IDs to the member IDs in Potterhouse, that will be called in the #houses method of the Cli class.
+    # #    binding.pry
+    #     characters = Characters.all.select {|id| id.character_id}
+    #     characters
+    #     # binding.pry
+    # end
+
+    def space
+       puts  " "
     end
 end

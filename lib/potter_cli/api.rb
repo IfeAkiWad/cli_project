@@ -2,25 +2,13 @@
 class Api
     URL = "https://www.potterapi.com/v1/"
     API_KEY = ENV["API_KEY"]
-    
-    def self.get_characters
-        # binding.pry
-        res = RestClient.get("#{URL}characters?key=#{API_KEY}")
-        data = JSON.parse(res.body)
-        data.each do |character| 
-            character_id = character['_id']
-            character_name = character['name']
-            character_role = character['role']
-            character_house = character['house']
-            character_school = character['school']
-            Characters.new(character_id, character_name, character_role, character_house, character_school)
-            # binding.pry
-        end
-    end 
 
+    # uri = URI(url) 
+    # response = Net::HTTP.get(uri)
+    
     def self.get_spells
-        res = RestClient.get("#{URL}spells?key=#{API_KEY}")
-        data = JSON.parse(res.body)
+        response = RestClient.get("#{URL}spells?key=#{API_KEY}")
+        data = JSON.parse(response.body)
         data.each do |spell| 
             name =  spell['spell'] 
             type = spell['type']
@@ -30,8 +18,8 @@ class Api
     end
     
     def self.get_houses
-        res = RestClient.get("#{URL}houses?key=#{API_KEY}")
-        data = JSON.parse(res.body)
+        response = RestClient.get("#{URL}houses?key=#{API_KEY}")
+        data = JSON.parse(response.body)
         data.each do |house|         
             house_id = house['_id']
             house_name = house['name']
@@ -45,5 +33,22 @@ class Api
             colors = house['colors']
             PotterHouse.new(house_id, house_name, house_head, mascot, house_ghost, founder, school, members, values, colors) 
         end
+        binding.pry
     end
+
+    def self.get_characters
+        # binding.pry
+        response = RestClient.get("#{URL}characters?key=#{API_KEY}")
+        data = JSON.parse(response.body)
+        binding.pry
+        data.each do |character| 
+            character_id = character['_id']
+            character_name = character['name']
+            character_role = character['role']
+            character_house = character['house']
+            character_school = character['school']
+            Characters.new(character_id, character_name, character_role, character_house, character_school)
+            # binding.pry
+        end
+    end 
 end
