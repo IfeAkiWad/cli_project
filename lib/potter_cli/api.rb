@@ -33,7 +33,7 @@ class Api
             colors = house['colors']
             PotterHouse.new(house_id, house_name, house_head, mascot, house_ghost, founder, school, members, values, colors) 
         end
-        binding.pry
+        # binding.pry
     end
 
     def self.get_characters #requesting GET from url for characters array
@@ -47,7 +47,7 @@ class Api
             character_house = character['house']
             character_school = character['school']
             Characters.new(character_id, character_name, character_role, character_house, character_school)
-            binding.pry
+            # binding.pry
         end
     end 
 end

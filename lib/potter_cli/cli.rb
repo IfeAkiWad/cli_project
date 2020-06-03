@@ -7,7 +7,7 @@ class Cli #handling all input and output. pulls together all the rest our classe
         user_input = gets.chomp
         
         while user_input != "exit"
-            puts "Welcome to Potte: House and Spells!"
+            puts "Welcome to Potter: House and Spells!"
             space
             sleep 2
             puts "To retrieve the book of spells by name, enter 'spell name'."

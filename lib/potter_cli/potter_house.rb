@@ -31,8 +31,11 @@ class PotterHouse
         members = []
         house = PotterHouse.all.find {|h| h.house_id}
         house.members.each do |member|
-            members << Characters.all.find
+            members << Characters.all.find {|c|c.character_id}
+            # binding.pry
         end 
         members
+        binding.pry
     end
+    # binding.pry
 end
