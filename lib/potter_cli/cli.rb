@@ -3,6 +3,10 @@ class Cli #handling all input and output. pulls together all the rest our classe
     #CLI to alllow user to be able to select whether they want to select by spell.name, spell.type, or spell.effect, or h.house_name = house
 
     attr_accessor :name, :type, :house_id, :house_name
+    def run
+        #make necessary api calls
+        call
+    end
     def call
         user_input = gets.chomp
         
@@ -48,9 +52,9 @@ class Cli #handling all input and output. pulls together all the rest our classe
         end
     end
 
-    def spell_type
+    def spell_type #repeats words, how to limit the appearance
         puts "Perhaps those who are best suited to power are those who have never sought it."
-        ordered_list = Potter.all.sort_by {|spell| spell.type}
+        ordered_list = Potter.all.uniq.sort_by {|spell| spell.type}
         i = 1
         ordered_list.each do |spell|
             puts "#{i}. #{spell.type}"
@@ -69,16 +73,37 @@ class Cli #handling all input and output. pulls together all the rest our classe
         end
     end
 
+    def house_menu
+        #print houses
+        #prompt selection
+        #find house
+        #print details
+    end
+
     def house
         puts "It does not do well to dwell on dreams and forget to live."
         ordered_list = PotterHouse.all.sort_by {|h| h.house_name}
         house_id  = 1
+        #use each.with_index(1) here
         ordered_list.each do |h|
             puts "#{house_id}. #{h.house_name}"
             house_id += 1
-            # member_id #calling the method
-            # binding.pry
+            binding.pry
         end
+    end
+
+    def prompt_select_house
+        puts "Enter a house number for more details" 
+        gets.chomp
+    end
+
+    def find_house(selection)
+        index = selection.to_i - 1
+        House.all[index]
+    end
+
+    def print_house_details(house)
+        #print the details for the house object
     end
 
     def exit

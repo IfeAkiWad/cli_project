@@ -1,4 +1,4 @@
-class Potter
+class PotterSpells
     
     attr_reader :name, :type, :effect
    

@@ -26,16 +26,13 @@ class PotterHouse
         @@all
     end
 
-    def self.house_members(house_id)
+    def house_members
         #for each of the member IDs associated with the house, we want to find that member instance, and save it in a array.
-        members = []
-        house = PotterHouse.all.find {|h| h.house_id}
-        house.members.each do |member|
-            members << Characters.all.find {|c|c.character_id}
+        self.members.map do |member_id|
+            Characters.all.find {|c| member_id == c.character_id}
             # binding.pry
         end 
-        members
-        binding.pry
+        # binding.pry
     end
     # binding.pry
 end

@@ -13,7 +13,7 @@ class Api
             name =  spell['spell'] 
             type = spell['type']
             effect = spell['effect']
-            Potter.new(name, type, effect)
+            PotterSpells.new(name, type, effect)
         end
     end
     
