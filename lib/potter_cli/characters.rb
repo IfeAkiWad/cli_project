@@ -21,7 +21,7 @@ class Characters
         @@all
     end
 
-    def self.find_character(id)
-        self.all.find(id) 
+    def self.find_character(character_id)
+        self.all.find(character_id) 
     end
 end

@@ -4,10 +4,10 @@ class Cli #handling all input and output. pulls together all the rest our classe
 
     attr_accessor :name, :type, :house_id, :house_name
     def call
-        user_input = gets.strip
+        user_input = gets.chomp
         
         while user_input != "exit"
-            puts "Welcome to Potter House and Spells!"
+            puts "Welcome to Potte: House and Spells!"
             space
             sleep 2
             puts "To retrieve the book of spells by name, enter 'spell name'."
@@ -18,11 +18,8 @@ class Cli #handling all input and output. pulls together all the rest our classe
             sleep 2
             puts "To visit the Hogwarts houses, enter 'house'."
             sleep 2
-            puts "To leave Potter House and Spells, enter 'exit'."
-            sleep 2
-            space
-            puts "What would you like to do?"
-            user_input = gets.strip
+            puts "To leave Potter: House and Spells, enter 'exit'."
+            user_input = gets.chomp
                 case user_input
                 when "spell name"
                     spell_name
@@ -32,12 +29,16 @@ class Cli #handling all input and output. pulls together all the rest our classe
                     spell_effect
                 when "house"
                     house
+                when "exit"
+                    exit
                 end
+                #would I place a gets here, after the user recieves the list of the selection?
         end
     end
 
     def spell_name
         # binding.pry
+        puts "Words are, in my not so humble opinion, our most inexhaustible source of magic, capable of both influencing injury, and remedying it."
         ordered_list = Potter.all.sort_by {|spell| spell.name}
         i = 1
         ordered_list.each do |spell|
@@ -48,6 +49,7 @@ class Cli #handling all input and output. pulls together all the rest our classe
     end
 
     def spell_type
+        puts "Perhaps those who are best suited to power are those who have never sought it."
         ordered_list = Potter.all.sort_by {|spell| spell.type}
         i = 1
         ordered_list.each do |spell|
@@ -58,6 +60,7 @@ class Cli #handling all input and output. pulls together all the rest our classe
     end
     
     def spell_effect
+        puts "I mean, it’s sort of exciting, isn’t it, breaking the rules?"
         ordered_list = Potter.all.sort_by {|spell| spell.effect}
         i = 1
         ordered_list.each do |spell|
@@ -67,6 +70,7 @@ class Cli #handling all input and output. pulls together all the rest our classe
     end
 
     def house
+        puts "It does not do well to dwell on dreams and forget to live."
         ordered_list = PotterHouse.all.sort_by {|h| h.house_name}
         house_id  = 1
         ordered_list.each do |h|
@@ -75,6 +79,11 @@ class Cli #handling all input and output. pulls together all the rest our classe
             # member_id #calling the method
             # binding.pry
         end
+    end
+
+    def exit
+        puts "Until the very end."
+        puts "Goodbye."
     end
 
     # def member_id #creating a method that will allow me to set matching chracter IDs to the member IDs in Potterhouse, that will be called in the #houses method of the Cli class.

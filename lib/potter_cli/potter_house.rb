@@ -31,7 +31,7 @@ class PotterHouse
         members = []
         house = PotterHouse.all.find {|h| h.house_id}
         house.members.each do |member|
-            members.push(Characters.all.find(member))
+            members << Characters.all.find
         end 
         members
     end

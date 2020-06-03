@@ -6,7 +6,7 @@ class Api
     # uri = URI(url) 
     # response = Net::HTTP.get(uri)
     
-    def self.get_spells
+    def self.get_spells #requesting GET from url for spells array
         response = RestClient.get("#{URL}spells?key=#{API_KEY}")
         data = JSON.parse(response.body)
         data.each do |spell| 
@@ -17,7 +17,7 @@ class Api
         end
     end
     
-    def self.get_houses
+    def self.get_houses #requesting GET from url for houses array
         response = RestClient.get("#{URL}houses?key=#{API_KEY}")
         data = JSON.parse(response.body)
         data.each do |house|         
@@ -36,11 +36,10 @@ class Api
         binding.pry
     end
 
-    def self.get_characters
+    def self.get_characters #requesting GET from url for characters array
         # binding.pry
         response = RestClient.get("#{URL}characters?key=#{API_KEY}")
         data = JSON.parse(response.body)
-        binding.pry
         data.each do |character| 
             character_id = character['_id']
             character_name = character['name']
@@ -48,7 +47,7 @@ class Api
             character_house = character['house']
             character_school = character['school']
             Characters.new(character_id, character_name, character_role, character_house, character_school)
-            # binding.pry
+            binding.pry
         end
     end 
 end
