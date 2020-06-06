@@ -20,7 +20,7 @@ class Cli #handling all input and output. pulls together all the rest our classe
 
     def print_error
         space
-        puts "invalid selection. Pease try again (maybe try capitalizing your selection)."
+        puts "invalid selection. Pease try again."
     end
 
     def print_characters
