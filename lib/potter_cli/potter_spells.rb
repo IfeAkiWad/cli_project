@@ -1,21 +1,21 @@
-class PotterSpells
+# class PotterSpells
     
-    attr_reader :name, :type, :effect
+#     attr_reader :name, :type, :effect
    
-    @@all = []
+#     @@all = []
 
-    def initialize(name, type, effect)
-        @name = name
-        @type = type
-        @effect = effect
-        @@all << self
-    end
+#     def initialize(name, type, effect)
+#         @name = name
+#         @type = type
+#         @effect = effect
+#         @@all << self
+#     end
 
-    def save 
-        @@all
-    end 
+#     def save 
+#         @@all
+#     end 
 
-    def self.all
-        @@all
-    end
-end
+#     def self.all
+#         @@all
+#     end
+# end
