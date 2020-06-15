@@ -13,10 +13,6 @@ class Characters
         @@all << self
     end
 
-    # def save
-    #     @@all
-    # end
-
     def self.all
         @@all
     end
