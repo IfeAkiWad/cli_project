@@ -51,12 +51,17 @@ class Cli #handling all input and output. pulls together all the rest our classe
 
     end
 
-    def character_valid?(user_selection)
-       response = Characters.all.find {|c| c.character_name.downcase == user_selection }     
-        if response == nil
+    def character_valid?(selection)
+       response = Characters.all.find {|c| c.character_name.downcase == selection }    
+        if selection == "list"
+        print_characters
+        prompt_select_characters
+        character_valid?(user_selection)    
+        elsif response == nil
             print_error
             sleep 1.5
-            main
+            prompt_select_characters
+            character_valid?(user_selection)
         else
             print_character_details(response)
         end
